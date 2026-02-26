@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Рубцова Валерия | Учитель английского и китайского</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #FAF9F6;
+            --primary-color: #5A8F7B;
+            --secondary-color: #88B8A8;
+            --accent-color: #D4E8E0;
+            --warm-color: #F0E4D4;
+            --text-dark: #2D4A45;
+            --text-light: #4A6B65;
+            --card-bg: #FFFFFF;
+            --shadow: 0 10px 30px rgba(90, 143, 123, 0.15);
+            --radius: 20px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--text-dark);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        header {
+            padding: 2rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            letter-spacing: -0.5px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding: 4rem 0;
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 750px;
+            animation: fadeIn 1.2s ease-out;
+        }
+        .hero h1 {
+            font-size: 3.8rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            color: var(--text-dark);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .highlight {
+            color: var(--primary-color);
+            font-style: italic;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(40px);
+            z-index: 1;
+            opacity: 0.7;
+        }
+        .blob-1 { 
+            width: 400px; height: 400px; 
+            background: #C5DDD4; 
+            top: -100px; right: -100px; 
+            animation: float 6s ease-in-out infinite;
+        }
+        .blob-2 { 
+            width: 300px; height: 300px; 
+            background: var(--warm-color); 
+            bottom: 50px; left: -80px; 
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        .section {
+            padding: 6rem 0;
+        }
+
+        .section-title {
+            font-size: 2.8rem;            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 4px;
+            background-color: var(--primary-color);
+            bottom: -10px;
+            left: 0;
+            border-radius: 2px;
+            opacity: 0.6;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-img-wrapper {
+            position: relative;
+        }
+
+        .about-img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            transform: rotate(-2deg);
+            transition: transform 0.4s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .about-img:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+
+        .about-text p {            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+        }
+
+        .philosophy-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 2.5rem 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            border: 2px solid rgba(90, 143, 123, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(90, 143, 123, 0.2);
+            border-color: var(--primary-color);
+        }
+
+        .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.2rem;
+            display: block;
+        }
+
+        .card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .creativity {
+            background-color: #FFFFFF;
+            border-radius: 40px;
+            padding: 5rem 3rem;
+            margin: 4rem 0;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .hobbies-list {
+            display: flex;
+            flex-wrap: wrap;            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .hobby-tag {
+            background-color: var(--accent-color);
+            color: var(--text-dark);
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .hobby-tag:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            height: 220px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(90, 143, 123, 0.2);
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(90, 143, 123, 0.35);
+        }
+
+        .gallery-item img {            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Materials Section */
+        .materials {
+            background: linear-gradient(135deg, var(--warm-color) 0%, var(--accent-color) 100%);
+            border-radius: 40px;
+            padding: 5rem 3rem;
+            margin: 4rem 0;
+            text-align: center;
+            border: 2px solid rgba(90, 143, 123, 0.1);
+        }
+
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .material-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 2px solid rgba(90, 143, 123, 0.1);
+            cursor: not-allowed;
+            opacity: 0.85;
+        }
+
+        .material-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .material-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;            height: 80px;
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--warm-color) 100%);
+            border-radius: 15px;
+        }
+
+        .material-icon svg {
+            width: 50px;
+            height: 50px;
+        }
+
+        .material-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .material-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .coming-soon {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.4rem 1.2rem;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(45, 74, 69, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;        }
+
+        .modal {
+            background: white;
+            border-radius: 30px;
+            padding: 3rem 2.5rem;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.4s ease;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 2rem;
+            color: var(--text-light);
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s;
+            background: var(--accent-color);
+        }
+
+        .modal-close:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        .modal-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .modal p {
+            color: var(--text-light);            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-text {
+            background: var(--warm-color);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: var(--text-dark);
+        }
+
+        footer {
+            text-align: center;
+            padding: 4rem 0 2rem;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .contact-box {
+            background: var(--primary-color);
+            color: white;
+            padding: 3rem;
+            border-radius: 30px;
+            margin-bottom: 3rem;
+            box-shadow: 0 15px 30px rgba(90, 143, 123, 0.4);
+        }
+
+        .contact-box h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .contact-box p {
+            opacity: 0.95;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.2rem;
+            border-radius: 50px;            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-white {
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+        .btn-white:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+
+        .btn-outline {
+            border: 2px solid white;
+            color: white;
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .btn-pinterest {
+            background-color: #E60023;
+            color: white;
+        }
+
+        .btn-pinterest:hover {
+            background-color: #cc001f;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(230, 0, 35, 0.3);
+        }
+
+        .copyright {
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(20px, 30px); }
+            100% { transform: translate(0, 0); }        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(50px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .about-img { height: 350px; transform: rotate(0); }
+            .creativity, .materials { padding: 3rem 1.5rem; }
+            nav ul { display: none; }
+            .section-title { font-size: 2.2rem; }
+            .modal { padding: 2rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="logo">Рубцова Валерия</div>
+            <nav>
+                <ul>
+                    <li><a href="#about">Обо мне</a></li>
+                    <li><a href="#principles">Принципы</a></li>
+                    <li><a href="#life">Интересы</a></li>
+                    <li><a href="#materials">Материалы</a></li>
+                    <li><a href="#contact">Связь</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+            
+            <div class="hero-content">                <h1>Английский и китайский<br><span class="highlight">для маленьких людей</span></h1>
+                <p>Привет! Я Валерия. Преподаю с любовью, учусь с интересом и открываю мир языков детям. Добро пожаловать в мое пространство.</p>
+                <div style="margin-top: 2rem;">
+                    <button class="btn btn-white" style="background: var(--primary-color); color: white; box-shadow: 0 5px 15px rgba(90,143,123,0.3);" onclick="openModal()">
+                        Познакомиться ближе
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <div class="about-grid">
+                <div class="about-img-wrapper">
+                    <!-- СЮДА ВСТАВИТЬ ВАШЕ ФОТО -->
+                    <img src="valeria.jpg" alt="Рубцова Валерия" class="about-img">
+                </div>
+                
+                <div class="about-text">
+                    <h2 class="section-title">Мой путь</h2>
+                    <p>Я начала преподавать английский язык в <strong>2017 году</strong>. За это время я поняла, что самое важное — не просто выучить правила, а полюбить процесс общения.</p>
+                    <p>В <strong>2021 году</strong> я сама села за парту (вернее, за экран), чтобы начать изучать китайский язык. Этот опыт дал мне свежий взгляд на то, как чувствует себя ученик, и еще больше вдохновил делиться знаниями.</p>
+                    <p>Сейчас я с огромным удовольствием учу <strong>«маленьких людей»</strong>. Для меня каждый урок — это маленькое путешествие, где мы вместе открываем новые культуры, звуки и смыслы.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="principles" class="section">
+            <h2 class="section-title">Мои принципы</h2>
+            <p style="font-size: 1.1rem; color: var(--text-light); max-width: 600px;">
+                То, на чем строится каждое наше занятие. Я верю, что правильный подход важнее зубрежки.
+            </p>
+            <div class="philosophy-cards">
+                <div class="card">
+                    <span class="icon">🪜</span>
+                    <h3>Последовательность</h3>
+                    <p>Мы движемся шаг за шагом. От простого к сложному, без спешки и стресса, закрепляя каждый этап игры и практики.</p>
+                </div>
+                <div class="card">
+                    <span class="icon">🎨</span>
+                    <h3>Вариативность</h3>
+                    <p>Если один способ изучения не сработал, я найду другие варианты.</p>
+                </div>
+                <div class="card">
+                    <span class="icon">🤝</span>
+                    <h3>Поддержка</h3>
+                    <p>Ошибка — это не провал, а точка роста. Я всегда рядом, чтобы помочь, похвалить и направить, создавая безопасную среду.</p>
+                </div>
+            </div>
+        </section>
+        <section id="life" class="creativity">
+            <h2 style="margin-bottom: 1rem;">За пределами уроков</h2>
+            <p style="color: var(--text-light); max-width: 600px; margin: 0 auto;">
+                Я убеждена: учитель должен постоянно развиваться. Мои главные увлечения питают мою энергию и помогают делать уроки интереснее.
+            </p>
+            
+            <div class="hobbies-list">
+                <span class="hobby-tag">✈️ Путешествия</span>
+                <span class="hobby-tag">💻 Технологии</span>
+                <span class="hobby-tag">📚 Книги</span>
+                <span class="hobby-tag">🌏 Мечта объехать мир</span>
+            </div>
+
+            <div class="gallery">
+                <div class="gallery-item">
+                    ✈️ Путешествия
+                </div>
+                <div class="gallery-item">
+                    💻 Технологии
+                </div>
+                <div class="gallery-item">
+                    📚 Книги
+                </div>
+                <div class="gallery-item">
+                    💡 Вдохновение
+                </div>
+            </div>
+            
+            <div style="margin-top: 3rem;">
+                <p style="margin-bottom: 1rem; font-weight: 600;">Моя коллекция материалов о Китае:</p>
+                <a href="https://pin.it/uVmn852vR" target="_blank" class="btn btn-pinterest">
+                    📌 Мой Pinterest о Китае
+                </a>
+            </div>
+        </section>
+
+        <!-- НОВЫЙ РАЗДЕЛ: МАТЕРИАЛЫ -->
+        <section id="materials" class="materials">
+            <h2 class="section-title">Материалы для обучения</h2>
+            <p style="color: var(--text-light); max-width: 600px; margin: 0 auto;">
+                Здесь я собираю полезные ресурсы, рабочие листы, игры и рекомендации для изучения английского и китайского языков
+            </p>
+            
+            <div class="materials-grid">
+                <div class="material-card">
+                    <div class="material-icon">
+                        <!-- Флаг Великобритании SVG -->
+                        <svg viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg">
+                            <clipPath id="s">
+                                <path d="M0,0 v30 h60 v-30 z"/>                            </clipPath>
+                            <clipPath id="t">
+                                <path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/>
+                            </clipPath>
+                            <g clip-path="url(#s)">
+                                <path d="M0,0 v30 h60 v-30 z" fill="#012169"/>
+                                <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/>
+                                <path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#t)" stroke="#C8102E" stroke-width="4"/>
+                                <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/>
+                                <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <h3>Английский язык</h3>
+                    <p>Рабочие листы, игры, карточки и видео для изучения английского</p>
+                    <span class="coming-soon">Скоро</span>
+                </div>
+                
+                <div class="material-card">
+                    <div class="material-icon">
+                        <!-- Флаг Китая SVG -->
+                        <svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="900" height="600" fill="#DE2910"/>
+                            <path d="M150,100 L161.8,138.2 L200,150 L161.8,161.8 L150,200 L138.2,161.8 L100,150 L138.2,138.2 Z" fill="#FFDE00"/>
+                            <path d="M250,50 L255.9,69.1 L275,75 L255.9,80.9 L250,100 L244.1,80.9 L225,75 L244.1,69.1 Z" fill="#FFDE00" transform="rotate(-20 250 75)"/>
+                            <path d="M300,100 L305.9,119.1 L325,125 L305.9,130.9 L300,150 L294.1,130.9 L275,125 L294.1,119.1 Z" fill="#FFDE00" transform="rotate(15 300 125)"/>
+                            <path d="M300,175 L305.9,194.1 L325,200 L305.9,205.9 L300,225 L294.1,205.9 L275,200 L294.1,194.1 Z" fill="#FFDE00" transform="rotate(45 300 200)"/>
+                            <path d="M250,225 L255.9,244.1 L275,250 L255.9,255.9 L250,275 L244.1,255.9 L225,250 L244.1,244.1 Z" fill="#FFDE00" transform="rotate(-15 250 250)"/>
+                        </svg>
+                    </div>
+                    <h3>Китайский язык</h3>
+                    <p>Иероглифы, упражнения, аудиоматериалы и культурные заметки</p>
+                    <span class="coming-soon">Скоро</span>
+                </div>
+                
+                <div class="material-card">
+                    <div class="material-icon">🎮</div>
+                    <h3>Игры и активности</h3>
+                    <p>Интерактивные игры и идеи для занятий с детьми</p>
+                    <span class="coming-soon">Скоро</span>
+                </div>
+                
+                <div class="material-card">
+                    <div class="material-icon">📖</div>
+                    <h3>Книги и статьи</h3>
+                    <p>Рекомендации литературы для учителей и учеников</p>
+                    <span class="coming-soon">Скоро</span>
+                </div>
+            </div>
+        </section>
+        <footer id="contact">
+            <div class="contact-box">
+                <h2>Давайте дружить!</h2>
+                <p>Если у вас есть вопросы, идеи для сотрудничества или вы просто хотите сказать «привет» — напишите мне.</p>
+                
+                <div class="btn-group">
+                    <a href="mailto:lady.leora@yandex.ru" class="btn btn-white">
+                        ✉️ Написать на почту
+                    </a>
+                    <a href="https://pin.it/uVmn852vR" target="_blank" class="btn btn-outline">
+                        Перейти в Pinterest
+                    </a>
+                </div>
+            </div>
+
+            <p class="copyright">© 2026 Рубцова Валерия. Сайт создан с любовью к языкам и детям.</p>
+        </footer>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modal" onclick="closeModalOnOverlay(event)">
+        <div class="modal" onclick="event.stopPropagation()">
+            <div class="modal-close" onclick="closeModal()">&times;</div>
+            <div class="modal-icon">📸</div>
+            <h2>Скоро здесь будут фотографии!</h2>
+            <p>Я работаю над тем, чтобы добавить сюда свои фотографии и рассказать больше о себе.</p>
+            <div class="modal-text">
+                "А пока вы можете написать мне — я всегда рада пообщаться!"
+            </div>
+            <button class="btn btn-white" onclick="closeModal()" style="margin-top: 1rem;">
+                Закрыть
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function openModal() {
+            document.getElementById('modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function closeModalOnOverlay(event) {
+            if (event.target === event.currentTarget) {
+                closeModal();            }
+        }
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+
+</body>
+</html>
