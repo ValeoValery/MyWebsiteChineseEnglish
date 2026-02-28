@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Рубцова Валерия | Учитель английского и китайского</title>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    
+    <!-- Фавикон - несколько форматов для совместимости -->
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <link rel="alternate icon" href="./favicon.ico">
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
@@ -47,6 +52,7 @@
             color: inherit;
             transition: all 0.3s ease;
         }
+
         .container {
             max-width: 1000px;
             margin: 0 auto;
@@ -97,6 +103,7 @@
             max-width: 750px;
             animation: fadeIn 1.2s ease-out;
         }
+
         .hero h1 {
             font-size: 3.8rem;
             margin-bottom: 1.5rem;
@@ -127,16 +134,22 @@
             z-index: 1;
             opacity: 0.7;
         }
+
         .blob-1 { 
-            width: 400px; height: 400px; 
+            width: 400px; 
+            height: 400px; 
             background: #C5DDD4; 
-            top: -100px; right: -100px; 
+            top: -100px; 
+            right: -100px; 
             animation: float 6s ease-in-out infinite;
         }
+
         .blob-2 { 
-            width: 300px; height: 300px; 
+            width: 300px; 
+            height: 300px; 
             background: var(--warm-color); 
-            bottom: 50px; left: -80px; 
+            bottom: 50px; 
+            left: -80px; 
             animation: float 8s ease-in-out infinite reverse;
         }
 
@@ -145,7 +158,8 @@
         }
 
         .section-title {
-            font-size: 2.8rem;            margin-bottom: 2rem;
+            font-size: 2.8rem;
+            margin-bottom: 2rem;
             position: relative;
             display: inline-block;
         }
@@ -171,30 +185,46 @@
 
         .about-img-wrapper {
             position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transform: rotate(-2deg);
+            transition: transform 0.4s ease;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        }
+
+        .about-img-wrapper:hover {
+            transform: rotate(0deg) scale(1.02);
         }
 
         .about-img {
             width: 100%;
             height: 450px;
             object-fit: cover;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            transform: rotate(-2deg);
-            transition: transform 0.4s ease;
+            display: block;
+        }
+
+        /* Заглушка, если фото не загрузилось */
+        .about-img-wrapper.no-image {
             display: flex;
             align-items: center;
             justify-content: center;
+            min-height: 450px;
             color: white;
             font-size: 1.5rem;
             font-weight: 600;
+            text-align: center;
+            padding: 2rem;
         }
 
-        .about-img:hover {
-            transform: rotate(0deg) scale(1.02);
+        .about-img-wrapper.no-image::before {
+            content: '📸\AФото\Aскоро\Aбудет';
+            white-space: pre;
+            line-height: 1.8;
         }
 
-        .about-text p {            margin-bottom: 1.2rem;
+        .about-text p {
+            margin-bottom: 1.2rem;
             font-size: 1.1rem;
         }
 
@@ -243,7 +273,8 @@
 
         .hobbies-list {
             display: flex;
-            flex-wrap: wrap;            justify-content: center;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 1rem;
             margin: 2rem 0;
         }
@@ -292,7 +323,8 @@
             box-shadow: 0 10px 25px rgba(90, 143, 123, 0.35);
         }
 
-        .gallery-item img {            width: 100%;
+        .gallery-item img {
+            width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -341,7 +373,8 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 80px;            height: 80px;
+            width: 80px;
+            height: 80px;
             background: linear-gradient(135deg, var(--accent-color) 0%, var(--warm-color) 100%);
             border-radius: 15px;
         }
@@ -390,7 +423,8 @@
         }
 
         .modal-overlay.active {
-            display: flex;        }
+            display: flex;
+        }
 
         .modal {
             background: white;
@@ -439,7 +473,8 @@
         }
 
         .modal p {
-            color: var(--text-light);            font-size: 1.1rem;
+            color: var(--text-light);
+            font-size: 1.1rem;
             margin-bottom: 1.5rem;
         }
 
@@ -488,7 +523,8 @@
         .btn {
             display: inline-block;
             padding: 1rem 2.2rem;
-            border-radius: 50px;            font-weight: 700;
+            border-radius: 50px;
+            font-weight: 700;
             font-size: 1rem;
             transition: all 0.3s;
             cursor: pointer;
@@ -537,7 +573,8 @@
         @keyframes float {
             0% { transform: translate(0, 0); }
             50% { transform: translate(20px, 30px); }
-            100% { transform: translate(0, 0); }        }
+            100% { transform: translate(0, 0); }
+        }
 
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -558,7 +595,7 @@
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
             .about-grid { grid-template-columns: 1fr; gap: 2rem; }
-            .about-img { height: 350px; transform: rotate(0); }
+            .about-img { height: 350px; }
             .creativity, .materials { padding: 3rem 1.5rem; }
             nav ul { display: none; }
             .section-title { font-size: 2.2rem; }
@@ -586,7 +623,8 @@
             <div class="blob blob-1"></div>
             <div class="blob blob-2"></div>
             
-            <div class="hero-content">                <h1>Английский и китайский<br><span class="highlight">для маленьких людей</span></h1>
+            <div class="hero-content">
+                <h1>Английский и китайский<br><span class="highlight">для маленьких людей</span></h1>
                 <p>Привет! Я Валерия. Преподаю с любовью, учусь с интересом и открываю мир языков детям. Добро пожаловать в мое пространство.</p>
                 <div style="margin-top: 2rem;">
                     <button class="btn btn-white" style="background: var(--primary-color); color: white; box-shadow: 0 5px 15px rgba(90,143,123,0.3);" onclick="openModal()">
@@ -598,9 +636,8 @@
 
         <section id="about" class="section">
             <div class="about-grid">
-                <div class="about-img-wrapper">
-                    <!-- СЮДА ВСТАВИТЬ ВАШЕ ФОТО -->
-                    <img src="valeria.jpg" alt="Рубцова Валерия" class="about-img">
+                <div class="about-img-wrapper" id="photoWrapper">
+                    <img src="valeria.jpg" alt="Рубцова Валерия" class="about-img" id="profilePhoto" onerror="handleImageError()">
                 </div>
                 
                 <div class="about-text">
@@ -635,6 +672,7 @@
                 </div>
             </div>
         </section>
+
         <section id="life" class="creativity">
             <h2 style="margin-bottom: 1rem;">За пределами уроков</h2>
             <p style="color: var(--text-light); max-width: 600px; margin: 0 auto;">
@@ -649,18 +687,10 @@
             </div>
 
             <div class="gallery">
-                <div class="gallery-item">
-                    ✈️ Путешествия
-                </div>
-                <div class="gallery-item">
-                    💻 Технологии
-                </div>
-                <div class="gallery-item">
-                    📚 Книги
-                </div>
-                <div class="gallery-item">
-                    💡 Вдохновение
-                </div>
+                <div class="gallery-item">✈️ Путешествия</div>
+                <div class="gallery-item">💻 Технологии</div>
+                <div class="gallery-item">📚 Книги</div>
+                <div class="gallery-item">💡 Вдохновение</div>
             </div>
             
             <div style="margin-top: 3rem;">
@@ -671,7 +701,6 @@
             </div>
         </section>
 
-        <!-- НОВЫЙ РАЗДЕЛ: МАТЕРИАЛЫ -->
         <section id="materials" class="materials">
             <h2 class="section-title">Материалы для обучения</h2>
             <p style="color: var(--text-light); max-width: 600px; margin: 0 auto;">
@@ -681,10 +710,10 @@
             <div class="materials-grid">
                 <div class="material-card">
                     <div class="material-icon">
-                        <!-- Флаг Великобритании SVG -->
                         <svg viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg">
                             <clipPath id="s">
-                                <path d="M0,0 v30 h60 v-30 z"/>                            </clipPath>
+                                <path d="M0,0 v30 h60 v-30 z"/>
+                            </clipPath>
                             <clipPath id="t">
                                 <path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/>
                             </clipPath>
@@ -704,7 +733,6 @@
                 
                 <div class="material-card">
                     <div class="material-icon">
-                        <!-- Флаг Китая SVG -->
                         <svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
                             <rect width="900" height="600" fill="#DE2910"/>
                             <path d="M150,100 L161.8,138.2 L200,150 L161.8,161.8 L150,200 L138.2,161.8 L100,150 L138.2,138.2 Z" fill="#FFDE00"/>
@@ -734,6 +762,7 @@
                 </div>
             </div>
         </section>
+
         <footer id="contact">
             <div class="contact-box">
                 <h2>Давайте дружить!</h2>
@@ -753,7 +782,6 @@
         </footer>
     </div>
 
-    <!-- Modal -->
     <div class="modal-overlay" id="modal" onclick="closeModalOnOverlay(event)">
         <div class="modal" onclick="event.stopPropagation()">
             <div class="modal-close" onclick="closeModal()">&times;</div>
@@ -770,6 +798,21 @@
     </div>
 
     <script>
+        // Обработка ошибки загрузки изображения
+        function handleImageError() {
+            const wrapper = document.getElementById('photoWrapper');
+            const img = document.getElementById('profilePhoto');
+            
+            // Скрываем img и показываем заглушку
+            img.style.display = 'none';
+            wrapper.classList.add('no-image');
+            
+            console.log('Изображение не загружено. Проверьте:');
+            console.log('1. Файл valeria.jpg находится в той же папке, что и index.html');
+            console.log('2. Имя файла точно valeria.jpg (маленькими буквами)');
+            console.log('3. Файл не поврежден');
+        }
+
         function openModal() {
             document.getElementById('modal').classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -782,16 +825,25 @@
 
         function closeModalOnOverlay(event) {
             if (event.target === event.currentTarget) {
-                closeModal();            }
+                closeModal();
+            }
         }
 
-        // Close modal on Escape key
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                 closeModal();
+            }
+        });
+
+        // Проверяем загрузку изображения при загрузке страницы
+        window.addEventListener('load', function() {
+            const img = document.getElementById('profilePhoto');
+            if (img.complete && img.naturalHeight === 0) {
+                handleImageError();
             }
         });
     </script>
 
 </body>
 </html>
+
